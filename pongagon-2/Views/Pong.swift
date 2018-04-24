@@ -9,31 +9,30 @@
 import UIKit
 
 class Pong: UIButton {
-    @IBOutlet weak var button: UIButton!
+    weak var delegate: PongDelegate?
     
-    override var layer: CALayer {
-        let layer = super.layer
-        layer.cornerRadius = 30
-        return layer
-    }
-    
-    override public var collisionBoundsType: UIDynamicItemCollisionBoundsType {
-        return .ellipse
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        initSubviews()
-    }
-        
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initSubviews()
+//        self.setBackgroundImage(#imageLiteral(resourceName: "pong.png"), for: UIControlState())
+        self.backgroundColor = UIColor.white
+        self.layer.borderWidth = bounds.maxX/20
+        self.layer.borderColor = UIColor.black.cgColor
+        self.setTitle("Green", for: UIControlState())
+        self.titleLabel!.font = UIFont(name: "BadWrite_Full", size: 35)
+        self.setTitleColor(UIColor.black , for: UIControlState())
+        self.layer.cornerRadius = (bounds.maxX/2)
+        self.layer.masksToBounds = true;
     }
     
-    func initSubviews() {
-        // standard initialization logic
-        let nib = UINib(nibName: "Pong", bundle: nil)
-        nib.instantiate(withOwner: self, options: nil)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delegate?.onPongTapped(self)
+    }
+}
+
+protocol PongDelegate: AnyObject {
+    func onPongTapped(_ tappedPong: Pong)
 }

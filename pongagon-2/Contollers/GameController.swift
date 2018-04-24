@@ -8,47 +8,99 @@
 
 import UIKit
 
-class GameController: UIViewController {
-    @IBOutlet weak var pong: UIButton!
-    var animator: UIDynamicAnimator?
+class GameController: UIViewController, PongDelegate {
+    
+    // Constants
+    let maxPongs: Int = 15
+    let spawnRate: Double = 0.5
+    let pongSize: CGFloat = 75
+    
+    var animatorController: AnimatorController?
+    var gameTimer: Timer?
+    var timerTick: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the animator
-        animator = UIDynamicAnimator(referenceView: self.view)
+        // Create the physics controller
+        animatorController = AnimatorController(context: self.view)
+        animatorController!.start()
         
-        // Add gravity
-        let gravity = UIGravityBehavior(items: [pong])
-        var gravityDirection = CGVector()
-        gravityDirection.dx = 0.0
-        gravityDirection.dy = 1.0
-        gravity.gravityDirection = gravityDirection
-        animator?.addBehavior(gravity)
-        
-        // Add bounce
-        let bounce = UIDynamicItemBehavior(items: [pong])
-        bounce.elasticity = 0.5
-        animator?.addBehavior(bounce)
-        
-        // Add collision
-        let boundaries = UICollisionBehavior(items: [pong])
-        boundaries.translatesReferenceBoundsIntoBoundary = true
-        animator?.addBehavior(boundaries)
+        // Start a timer loop
+        gameTimer = Timer.scheduledTimer(withTimeInterval: spawnRate, repeats: true, block: { (gameTimer: Timer) in
+            self.update()
+        })
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func update() {
+        if (getPongCount() < maxPongs) {
+            addPong()
+        }
+        
+        if timerTick % 3 == 0 {
+            for view in self.view.subviews {
+                if view.tag >= 100 {
+                    removePong(view as! Pong)
+                    break
+                }
+            }
+        }
+        
+        timerTick += 1
     }
     
-    
-    @IBAction func touchedPong(_ sender: UIButton) {
-        // Add velocity
-        let velocity = UIDynamicItemBehavior(items: [pong])
-        let force = CGFloat(100.5)
-        velocity.addAngularVelocity(force, for: pong)
-        animator?.addBehavior(velocity)
+    func addPong() {
+        // Create the view at a random location in the allowable bounds
+        let allowableX = UInt32(self.view.bounds.size.width) - UInt32(pongSize)
+        let allowableY = UInt32(self.view.bounds.size.height) - UInt32(pongSize)
+        let randPosX = CGFloat(arc4random_uniform(allowableX))
+        let randPosY = CGFloat(arc4random_uniform(allowableY))
+        
+        let pong: Pong = Pong(frame: CGRect(x: randPosX, y: randPosY, width: pongSize, height: pongSize))
+        
+        pong.delegate = self
+        pong.tag = uniqueTag()
+        
+        // Add the pong as a subview and set up the physics
+        self.view.addSubview(pong)
+        animatorController!.addObject(pong)
     }
     
+    func removePong(_ pong: Pong) {
+        animatorController!.removeObject(pong)
+        
+        if let pongInView = self.view.viewWithTag(pong.tag) {
+            pongInView.removeFromSuperview()
+        }
+    }
+    
+    func animateRemoval(for pong: Pong) {
+        let points: Points = Points(frame: CGRect(x: pong.frame.minX, y: pong.frame.minY, width: pongSize, height: pongSize))
+        points.text = "10"
+        self.view.addSubview(points)
+    }
+    
+    func onPongTapped(_ tappedPong: Pong) {
+        removePong(tappedPong)
+        animateRemoval(for: tappedPong)
+    }
+    
+    func uniqueTag() -> Int {
+        while true {
+            let randomTag = Int(arc4random_uniform(100) + 100)
+            guard let _ = self.view.viewWithTag(randomTag) else {
+                return randomTag
+            }
+        }
+    }
+    
+    func getPongCount() -> Int {
+        var count: Int = 0
+        for view in self.view.subviews {
+            if view.tag >= 100 {
+                count += 1
+            }
+        }
+        return count
+    }
 }

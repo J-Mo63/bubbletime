@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD99FF80208F25D1009B42E5 /* BadWrite.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */; };
+		DD99FF85208F45B4009B42E5 /* AnimatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99FF84208F45B4009B42E5 /* AnimatorController.swift */; };
+		DD99FF87208FB6FC009B42E5 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99FF86208FB6FC009B42E5 /* Points.swift */; };
 		DDC39611208702F000B46249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC39610208702F000B46249 /* AppDelegate.swift */; };
 		DDC39613208702F000B46249 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC39612208702F000B46249 /* ViewController.swift */; };
 		DDC39618208702F100B46249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC39617208702F100B46249 /* Assets.xcassets */; };
 		DDC396252087167B00B46249 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC396242087167B00B46249 /* GameController.swift */; };
 		DDC3963820872BA400B46249 /* pong.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC3963720872BA400B46249 /* pong.png */; };
 		DDC39640208733F600B46249 /* Pong.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3963F208733F600B46249 /* Pong.swift */; };
-		DDC39642208734FF00B46249 /* Pong.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC39641208734FF00B46249 /* Pong.xib */; };
 		DDC3964A20873A7300B46249 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC3964820873A7200B46249 /* Main.storyboard */; };
 		DDC3964B20873A7300B46249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC3964920873A7300B46249 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BadWrite.ttf; sourceTree = "<group>"; };
+		DD99FF84208F45B4009B42E5 /* AnimatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorController.swift; sourceTree = "<group>"; };
+		DD99FF86208FB6FC009B42E5 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		DDC3960D208702F000B46249 /* pongagon-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pongagon-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC39610208702F000B46249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDC39612208702F000B46249 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +32,6 @@
 		DDC396242087167B00B46249 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		DDC3963720872BA400B46249 /* pong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pong.png; sourceTree = "<group>"; };
 		DDC3963F208733F600B46249 /* Pong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pong.swift; sourceTree = "<group>"; };
-		DDC39641208734FF00B46249 /* Pong.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Pong.xib; sourceTree = "<group>"; };
 		DDC3964820873A7200B46249 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DDC3964920873A7300B46249 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD99FF81208F2B35009B42E5 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				DD99FF84208F45B4009B42E5 /* AnimatorController.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		DDC39604208702F000B46249 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +74,7 @@
 		DDC3960F208702F000B46249 /* pongagon-2 */ = {
 			isa = PBXGroup;
 			children = (
+				DD99FF81208F2B35009B42E5 /* utils */,
 				DDC3964F20873AC400B46249 /* Assets */,
 				DDC3964E20873AAF00B46249 /* Contollers */,
 				DDC3964C20873A7700B46249 /* Storyboards */,
@@ -85,8 +98,8 @@
 		DDC3964D20873A9A00B46249 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DDC39641208734FF00B46249 /* Pong.xib */,
 				DDC3963F208733F600B46249 /* Pong.swift */,
+				DD99FF86208FB6FC009B42E5 /* Points.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				DDC3963720872BA400B46249 /* pong.png */,
+				DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -166,8 +180,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDC39642208734FF00B46249 /* Pong.xib in Resources */,
 				DDC3963820872BA400B46249 /* pong.png in Resources */,
+				DD99FF80208F25D1009B42E5 /* BadWrite.ttf in Resources */,
 				DDC39618208702F100B46249 /* Assets.xcassets in Resources */,
 				DDC3964B20873A7300B46249 /* LaunchScreen.storyboard in Resources */,
 				DDC3964A20873A7300B46249 /* Main.storyboard in Resources */,
@@ -183,7 +197,9 @@
 			files = (
 				DDC39613208702F000B46249 /* ViewController.swift in Sources */,
 				DDC396252087167B00B46249 /* GameController.swift in Sources */,
+				DD99FF85208F45B4009B42E5 /* AnimatorController.swift in Sources */,
 				DDC39611208702F000B46249 /* AppDelegate.swift in Sources */,
+				DD99FF87208FB6FC009B42E5 /* Points.swift in Sources */,
 				DDC39640208733F600B46249 /* Pong.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
