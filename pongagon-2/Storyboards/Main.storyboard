@@ -69,13 +69,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="H8J-Zu-XT6">
                                 <rect key="frame" x="5" y="25" width="365" height="24.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 points" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMu-fz-FKO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 points" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMu-fz-FKO">
                                         <rect key="frame" x="0.0" y="0.0" width="182.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="BadWrite_Full" family="BadWrite_Full" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25s" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-fQ-pdM">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60s" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-fQ-pdM">
                                         <rect key="frame" x="182.5" y="0.0" width="182.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="BadWrite_Full" family="BadWrite_Full" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -92,6 +92,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hww-vB-5mJ"/>
                     </view>
+                    <connections>
+                        <outlet property="pointsLabel" destination="RMu-fz-FKO" id="h8S-PX-HRh"/>
+                        <outlet property="timerLabel" destination="lYz-fQ-pdM" id="s8D-MG-zG8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJs-4x-Ke6" sceneMemberID="firstResponder"/>
             </objects>

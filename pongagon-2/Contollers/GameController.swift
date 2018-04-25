@@ -10,10 +10,12 @@ import UIKit
 
 class GameController: UIViewController, PongDelegate {
     
-    // Constants
+    // Game options
     let maxPongs: Int = 15
     let spawnRate: Double = 0.5
     let pongSize: CGFloat = 75
+    var gameTime: Int = 60
+    var gamePoints: Int = 0
     
     // Dimensions
     var allowableX: UInt32?
@@ -23,6 +25,11 @@ class GameController: UIViewController, PongDelegate {
     var animatorController: AnimatorController?
     var gameTimer: Timer?
     var timerTick: Int = 0
+    var lastTapped: PongType?
+    
+    // Outlets
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +54,10 @@ class GameController: UIViewController, PongDelegate {
             addPong()
         }
         
-        // Remove a "random" pong every second tick
-        if timerTick % 3 == 0 {
+        // Remove a "random" pong every second tick (and also decrement the timer)
+        if timerTick % 3 == 2 {
+            gameTime -= 1
+            timerLabel.text = "\(gameTime)s"
             for view in self.view.subviews {
                 if view.tag >= 100 {
                     destroyPong(view as! Pong)
@@ -93,7 +102,7 @@ class GameController: UIViewController, PongDelegate {
         let points: Points = Points(frame: CGRect(x: pong.frame.minX, y: pong.frame.minY, width: pongSize, height: pongSize))
         
         // Set the point value and add it to the view
-        points.text = "10"
+        points.text = String(calculatePoints(for: pong.type))
         self.view.addSubview(points)
     }
     
@@ -101,6 +110,17 @@ class GameController: UIViewController, PongDelegate {
         // Destroy the pong and show its points value
         destroyPong(tappedPong)
         showPoints(for: tappedPong)
+        gamePoints += calculatePoints(for: tappedPong.type)
+        pointsLabel.text = "\(gamePoints) points"
+    }
+    
+    func calculatePoints(for pongType: PongType) -> Int {
+        var points: Int = pongType.points()
+        if (pongType == lastTapped) {
+            points = Int(Double(points) * 1.5)
+        }
+        lastTapped = pongType
+        return points
     }
     
     func uniqueTag() -> Int {
