@@ -9,11 +9,14 @@
 import UIKit
 
 class Pong: UIButton {
+    
+    // Fields
     weak var delegate: PongDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.setBackgroundImage(#imageLiteral(resourceName: "pong.png"), for: UIControlState())
+        
+        // Set up default properties
         self.backgroundColor = UIColor.white
         self.layer.borderWidth = bounds.maxX/20
         self.layer.borderColor = UIColor.black.cgColor
@@ -29,10 +32,12 @@ class Pong: UIButton {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Send touch event to deleagte callback
         delegate?.onPongTapped(self)
     }
 }
 
+// The pong's delegate protocol
 protocol PongDelegate: AnyObject {
     func onPongTapped(_ tappedPong: Pong)
 }

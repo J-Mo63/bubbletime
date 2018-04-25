@@ -48,18 +48,18 @@ class AnimatorController {
         })
     }
     
-    func addObject(_ pong: Pong) {
+    func addObject(_ object: UIView) {
         // Add the item to the collidable objects
-        gravity.addItem(pong)
-        elasticity.addItem(pong)
-        collision.addItem(pong)
+        gravity.addItem(object)
+        elasticity.addItem(object)
+        collision.addItem(object)
     }
     
-    func removeObject(_ pong: Pong) {
+    func removeObject(_ object: UIView) {
         // Add the item to the collidable objects
-        gravity.removeItem(pong)
-        elasticity.removeItem(pong)
-        collision.removeItem(pong)
+        gravity.removeItem(object)
+        elasticity.removeItem(object)
+        collision.removeItem(object)
     }
     
     func updateGravity() {

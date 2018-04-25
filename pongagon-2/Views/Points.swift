@@ -9,28 +9,38 @@
 import UIKit
 
 class Points: UILabel {
+    
+    // Constants
+    let lifespan: Int = 50
+    
+    // Fields
     var lifespanTimer: Timer?
     var timerTick: Int = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        // Set up default properties
         self.textColor = UIColor.white
         self.font = UIFont(name: "BadWrite_Full", size: 50)
         
+        // Start a timer loop to run the update function
         lifespanTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (lifespanTimer: Timer) in
             self.update()
         })
     }
     
     func update() {
-        alpha = alpha - 0.02
+        // Make the points label float up and slowly disappear
         self.center.y -= 1
+        alpha = alpha - 0.02
         
-        if timerTick > 50 {
+        // Destry the object after it has reached its lifespan
+        if timerTick > lifespan {
             self.removeFromSuperview()
         }
         
+        // Increment the tick
         timerTick += 1
     }
     
