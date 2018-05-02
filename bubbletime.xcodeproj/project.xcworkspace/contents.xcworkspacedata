@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:pongagon-2.xcodeproj">
+      location = "self:/Users/J-Mo/Projects/pongagon-2/bubbletime.xcodeproj">
    </FileRef>
 </Workspace>

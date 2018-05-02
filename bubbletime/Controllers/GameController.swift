@@ -14,7 +14,7 @@ class GameController: UIViewController, PongDelegate {
     let maxPongs: Int = 15
     let spawnRate: Double = 0.5
     let pongSize: CGFloat = 75
-    var gameTime: Int = 60
+    var gameTime: Int = 5
     var gamePoints: Int = 0
     
     // Dimensions
@@ -22,7 +22,7 @@ class GameController: UIViewController, PongDelegate {
     var allowableY: UInt32?
     
     // Fields
-    var animatorController: AnimatorController?
+    var animatorController: AnimatorManager?
     var gameTimer: Timer?
     var timerTick: Int = 0
     var lastTapped: PongType?
@@ -35,12 +35,16 @@ class GameController: UIViewController, PongDelegate {
         super.viewDidLoad()
         
         // Create the animator controller
-        animatorController = AnimatorController(context: self.view)
+        animatorController = AnimatorManager(context: self.view)
         animatorController!.start()
         
         // Set the dimensions
         allowableX = UInt32(self.view.bounds.size.width) - UInt32(pongSize)
         allowableY = UInt32(self.view.bounds.size.height) - UInt32(pongSize)
+        
+        // Set the labels to initial values
+        timerLabel.text = "\(gameTime)s"
+        pointsLabel.text = "\(gamePoints) points"
         
         // Start a timer loop to run the update function
         gameTimer = Timer.scheduledTimer(withTimeInterval: spawnRate, repeats: true, block: { (gameTimer: Timer) in
@@ -52,6 +56,12 @@ class GameController: UIViewController, PongDelegate {
         // Add more pongs if the max hasn't been reached
         if (getPongCount() < maxPongs) {
             addPong()
+        }
+        
+        // End the game if the timelimit is reached
+        if gameTime <= 0 {
+            gameTimer?.invalidate()
+            self.performSegue(withIdentifier: "endGameSegue", sender: self)
         }
         
         // Remove a "random" pong every second tick (and also decrement the timer)
@@ -111,15 +121,15 @@ class GameController: UIViewController, PongDelegate {
         destroyPong(tappedPong)
         showPoints(for: tappedPong)
         gamePoints += calculatePoints(for: tappedPong.type)
+        lastTapped = tappedPong.type
         pointsLabel.text = "\(gamePoints) points"
     }
     
     func calculatePoints(for pongType: PongType) -> Int {
         var points: Int = pongType.points()
         if (pongType == lastTapped) {
-            points = Int(Double(points) * 1.5)
+            points = Int((Double(points) * 1.5).rounded(.up))
         }
-        lastTapped = pongType
         return points
     }
     
@@ -143,5 +153,12 @@ class GameController: UIViewController, PongDelegate {
             }
         }
         return count
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "endGameSegue") {
+            let endGameController = segue.destination as! EndGameController
+            endGameController.playerScore = PlayerScore(name: "Swifty McVay", score: gamePoints)
+        }
     }
 }

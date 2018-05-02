@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD265AD52099D7B100FF1C0D /* EndGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD265AD42099D7B100FF1C0D /* EndGameController.swift */; };
+		DD265AD82099EF4E00FF1C0D /* PlayerScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD265AD72099EF4E00FF1C0D /* PlayerScore.swift */; };
 		DD99FF80208F25D1009B42E5 /* BadWrite.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */; };
-		DD99FF85208F45B4009B42E5 /* AnimatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99FF84208F45B4009B42E5 /* AnimatorController.swift */; };
+		DD99FF85208F45B4009B42E5 /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99FF84208F45B4009B42E5 /* AnimatorManager.swift */; };
 		DD99FF87208FB6FC009B42E5 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99FF86208FB6FC009B42E5 /* Points.swift */; };
 		DDC39611208702F000B46249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC39610208702F000B46249 /* AppDelegate.swift */; };
-		DDC39613208702F000B46249 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC39612208702F000B46249 /* ViewController.swift */; };
+		DDC39613208702F000B46249 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC39612208702F000B46249 /* HomeController.swift */; };
 		DDC39618208702F100B46249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDC39617208702F100B46249 /* Assets.xcassets */; };
 		DDC396252087167B00B46249 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC396242087167B00B46249 /* GameController.swift */; };
 		DDC3963820872BA400B46249 /* pong.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC3963720872BA400B46249 /* pong.png */; };
@@ -21,12 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD265AD42099D7B100FF1C0D /* EndGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameController.swift; sourceTree = "<group>"; };
+		DD265AD72099EF4E00FF1C0D /* PlayerScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScore.swift; sourceTree = "<group>"; };
 		DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BadWrite.ttf; sourceTree = "<group>"; };
-		DD99FF84208F45B4009B42E5 /* AnimatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorController.swift; sourceTree = "<group>"; };
+		DD99FF84208F45B4009B42E5 /* AnimatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorManager.swift; sourceTree = "<group>"; };
 		DD99FF86208FB6FC009B42E5 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
-		DDC3960D208702F000B46249 /* pongagon-2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pongagon-2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDC3960D208702F000B46249 /* bubbletime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bubbletime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDC39610208702F000B46249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DDC39612208702F000B46249 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DDC39612208702F000B46249 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		DDC39617208702F100B46249 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDC3961C208702F100B46249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDC396242087167B00B46249 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
@@ -47,10 +51,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD265AD62099EF3C00FF1C0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DD265AD72099EF4E00FF1C0D /* PlayerScore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DD99FF81208F2B35009B42E5 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				DD99FF84208F45B4009B42E5 /* AnimatorController.swift */,
+				DD99FF84208F45B4009B42E5 /* AnimatorManager.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -58,7 +70,7 @@
 		DDC39604208702F000B46249 = {
 			isa = PBXGroup;
 			children = (
-				DDC3960F208702F000B46249 /* pongagon-2 */,
+				DDC3960F208702F000B46249 /* bubbletime */,
 				DDC3960E208702F000B46249 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,24 +78,25 @@
 		DDC3960E208702F000B46249 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DDC3960D208702F000B46249 /* pongagon-2.app */,
+				DDC3960D208702F000B46249 /* bubbletime.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DDC3960F208702F000B46249 /* pongagon-2 */ = {
+		DDC3960F208702F000B46249 /* bubbletime */ = {
 			isa = PBXGroup;
 			children = (
+				DD265AD62099EF3C00FF1C0D /* Models */,
 				DD99FF81208F2B35009B42E5 /* utils */,
 				DDC3964F20873AC400B46249 /* Assets */,
-				DDC3964E20873AAF00B46249 /* Contollers */,
+				DDC3964E20873AAF00B46249 /* Controllers */,
 				DDC3964C20873A7700B46249 /* Storyboards */,
 				DDC3964D20873A9A00B46249 /* Views */,
 				DDC39610208702F000B46249 /* AppDelegate.swift */,
 				DDC39617208702F100B46249 /* Assets.xcassets */,
 				DDC3961C208702F100B46249 /* Info.plist */,
 			);
-			path = "pongagon-2";
+			path = bubbletime;
 			sourceTree = "<group>";
 		};
 		DDC3964C20873A7700B46249 /* Storyboards */ = {
@@ -104,13 +117,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DDC3964E20873AAF00B46249 /* Contollers */ = {
+		DDC3964E20873AAF00B46249 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DDC39612208702F000B46249 /* ViewController.swift */,
+				DDC39612208702F000B46249 /* HomeController.swift */,
 				DDC396242087167B00B46249 /* GameController.swift */,
+				DD265AD42099D7B100FF1C0D /* EndGameController.swift */,
 			);
-			path = Contollers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		DDC3964F20873AC400B46249 /* Assets */ = {
@@ -125,9 +139,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DDC3960C208702F000B46249 /* pongagon-2 */ = {
+		DDC3960C208702F000B46249 /* bubbletime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DDC3961F208702F100B46249 /* Build configuration list for PBXNativeTarget "pongagon-2" */;
+			buildConfigurationList = DDC3961F208702F100B46249 /* Build configuration list for PBXNativeTarget "bubbletime" */;
 			buildPhases = (
 				DDC39609208702F000B46249 /* Sources */,
 				DDC3960A208702F000B46249 /* Frameworks */,
@@ -137,9 +151,9 @@
 			);
 			dependencies = (
 			);
-			name = "pongagon-2";
+			name = bubbletime;
 			productName = "pongagon-2";
-			productReference = DDC3960D208702F000B46249 /* pongagon-2.app */;
+			productReference = DDC3960D208702F000B46249 /* bubbletime.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -157,7 +171,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DDC39608208702F000B46249 /* Build configuration list for PBXProject "pongagon-2" */;
+			buildConfigurationList = DDC39608208702F000B46249 /* Build configuration list for PBXProject "bubbletime" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -170,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DDC3960C208702F000B46249 /* pongagon-2 */,
+				DDC3960C208702F000B46249 /* bubbletime */,
 			);
 		};
 /* End PBXProject section */
@@ -195,12 +209,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDC39613208702F000B46249 /* ViewController.swift in Sources */,
+				DDC39613208702F000B46249 /* HomeController.swift in Sources */,
 				DDC396252087167B00B46249 /* GameController.swift in Sources */,
-				DD99FF85208F45B4009B42E5 /* AnimatorController.swift in Sources */,
+				DD265AD82099EF4E00FF1C0D /* PlayerScore.swift in Sources */,
+				DD99FF85208F45B4009B42E5 /* AnimatorManager.swift in Sources */,
 				DDC39611208702F000B46249 /* AppDelegate.swift in Sources */,
 				DD99FF87208FB6FC009B42E5 /* Points.swift in Sources */,
 				DDC39640208733F600B46249 /* Pong.swift in Sources */,
+				DD265AD52099D7B100FF1C0D /* EndGameController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,13 +343,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2A9AZU9A2Y;
-				INFOPLIST_FILE = "pongagon-2/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/bubbletime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sudo-code.pongagon-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sudo-code.bubbletime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,13 +362,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2A9AZU9A2Y;
-				INFOPLIST_FILE = "pongagon-2/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/bubbletime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sudo-code.pongagon-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sudo-code.bubbletime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,7 +378,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DDC39608208702F000B46249 /* Build configuration list for PBXProject "pongagon-2" */ = {
+		DDC39608208702F000B46249 /* Build configuration list for PBXProject "bubbletime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DDC3961D208702F100B46249 /* Debug */,
@@ -371,7 +387,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DDC3961F208702F100B46249 /* Build configuration list for PBXNativeTarget "pongagon-2" */ = {
+		DDC3961F208702F100B46249 /* Build configuration list for PBXNativeTarget "bubbletime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DDC39620208702F100B46249 /* Debug */,

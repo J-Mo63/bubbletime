@@ -9,7 +9,7 @@
 import UIKit
 import CoreMotion
 
-class AnimatorController {
+class AnimatorManager {
     
     // Fields
     var animator: UIDynamicAnimator
