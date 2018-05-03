@@ -8,17 +8,19 @@
 
 import UIKit
 
-class AlertHelper {
+struct AlertHelper {
     
     // Fields
     weak var delegate: AlertDelegate?
     let alertController: UIAlertController
     
     init(withText title: String, and message: String) {
+        // Set the controller title and message
         alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
     }
     
     func addTextField(for description: String) {
+        // Add a textfield with a description
         alertController.addTextField { (textField : UITextField) -> Void in
             textField.placeholder = description
         }
@@ -48,11 +50,11 @@ class AlertHelper {
         // Add the actions
         actions.append(okAction)
         actions.append(cancelAction)
-        
         return actions
     }
 }
 
+// The AlertHelper's delegate protocol
 protocol AlertDelegate: AnyObject {
     func onCancelAction()
     func onSubmit(text: String?)

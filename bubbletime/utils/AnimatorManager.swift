@@ -22,8 +22,9 @@ class AnimatorManager {
     var collision: UICollisionBehavior
     
     init(context: UIView) {        
-        // Create the animator
+        // Create the animator and motion manager
         animator = UIDynamicAnimator(referenceView: context)
+        motionManager = CMMotionManager()
         
         // Add gravity
         gravity = UIGravityBehavior()
@@ -40,8 +41,7 @@ class AnimatorManager {
         animator.addBehavior(collision)
     }
     
-    func start() {
-        motionManager = CMMotionManager()
+    func startGravityUpdates() {
         updateGravity()
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (timer: Timer) in
             self.updateGravity()

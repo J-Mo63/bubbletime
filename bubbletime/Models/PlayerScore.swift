@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PlayerScore {
-    let name: String
+struct PlayerScore : Encodable, Decodable {
+    var name: String
     var score: Int
 }

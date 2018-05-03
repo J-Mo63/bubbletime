@@ -10,22 +10,25 @@ import UIKit
 
 class GameController: UIViewController, PongDelegate {
     
-    // Game options
-    let maxPongs: Int = 15
-    let spawnRate: Double = 0.5
+    // Constants
     let pongSize: CGFloat = 75
-    var gameTime: Int = 5
-    var gamePoints: Int = 0
+    let spawnRate: Double = 0.5
+    
+    // Game Settings
+    var maxPongs: Int = 15
+    var gameTime: Int = 60
     
     // Dimensions
     var allowableX: UInt32?
     var allowableY: UInt32?
     
     // Fields
+    var gameSettings: GameSettings? = GameSettings()
     var animatorController: AnimatorManager?
     var gameTimer: Timer?
     var timerTick: Int = 0
     var lastTapped: PongType?
+    var gamePoints: Int = 0
     
     // Outlets
     @IBOutlet weak var pointsLabel: UILabel!
@@ -34,9 +37,15 @@ class GameController: UIViewController, PongDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Apply the game settings
+        if let settings = gameSettings {
+            maxPongs = settings.maxPongs
+            gameTime = settings.gameTime
+        }
+        
         // Create the animator controller
         animatorController = AnimatorManager(context: self.view)
-        animatorController!.start()
+        animatorController!.startGravityUpdates()
         
         // Set the dimensions
         allowableX = UInt32(self.view.bounds.size.width) - UInt32(pongSize)
@@ -158,7 +167,9 @@ class GameController: UIViewController, PongDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "endGameSegue") {
             let endGameController = segue.destination as! EndGameController
-            endGameController.playerScore = PlayerScore(name: "Swifty McVay", score: gamePoints)
+            
+            // Give the next controller the game results
+            endGameController.finalScore = gamePoints
         }
     }
 }
