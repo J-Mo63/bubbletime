@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DD265AD52099D7B100FF1C0D /* EndGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD265AD42099D7B100FF1C0D /* EndGameController.swift */; };
 		DD265AD82099EF4E00FF1C0D /* PlayerScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD265AD72099EF4E00FF1C0D /* PlayerScore.swift */; };
+		DD439C1C209AC1EA00F5C809 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD439C1B209AC1EA00F5C809 /* AlertHelper.swift */; };
 		DD99FF80208F25D1009B42E5 /* BadWrite.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */; };
 		DD99FF85208F45B4009B42E5 /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99FF84208F45B4009B42E5 /* AnimatorManager.swift */; };
 		DD99FF87208FB6FC009B42E5 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD99FF86208FB6FC009B42E5 /* Points.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		DD265AD42099D7B100FF1C0D /* EndGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameController.swift; sourceTree = "<group>"; };
 		DD265AD72099EF4E00FF1C0D /* PlayerScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerScore.swift; sourceTree = "<group>"; };
+		DD439C1B209AC1EA00F5C809 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BadWrite.ttf; sourceTree = "<group>"; };
 		DD99FF84208F45B4009B42E5 /* AnimatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorManager.swift; sourceTree = "<group>"; };
 		DD99FF86208FB6FC009B42E5 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				DD99FF84208F45B4009B42E5 /* AnimatorManager.swift */,
+				DD439C1B209AC1EA00F5C809 /* AlertHelper.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				DD99FF85208F45B4009B42E5 /* AnimatorManager.swift in Sources */,
 				DDC39611208702F000B46249 /* AppDelegate.swift in Sources */,
 				DD99FF87208FB6FC009B42E5 /* Points.swift in Sources */,
+				DD439C1C209AC1EA00F5C809 /* AlertHelper.swift in Sources */,
 				DDC39640208733F600B46249 /* Pong.swift in Sources */,
 				DD265AD52099D7B100FF1C0D /* EndGameController.swift in Sources */,
 			);

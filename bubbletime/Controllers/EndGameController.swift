@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EndGameController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class EndGameController: UIViewController, UITableViewDataSource, UITableViewDelegate, AlertDelegate {
     
     // Fields
     var playerScore: PlayerScore?
@@ -38,6 +38,15 @@ class EndGameController: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let alertHelper = AlertHelper(withText: "Save Score", and: "Enter your name")
+        alertHelper.delegate = self
+        alertHelper.addTextField(for: "Name")
+        alertHelper.displayAlert(for: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,6 +72,14 @@ class EndGameController: UIViewController, UITableViewDataSource, UITableViewDel
             cell.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 0.1)
         }
         return cell
+    }
+    
+    func onSubmit(text: String?) {
+        print(text!)
+    }
+    
+    func onCancelAction() {
+        print("Cancelled")
     }
     
 }

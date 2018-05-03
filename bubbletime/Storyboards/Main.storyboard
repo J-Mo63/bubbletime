@@ -18,7 +18,7 @@
         <!--Home Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeController" customModule="pongagon_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeController" customModule="bubbletime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,7 +105,7 @@
         <!--Game Controller-->
         <scene sceneID="vJJ-Rr-LBe">
             <objects>
-                <viewController id="8ZS-76-bRZ" customClass="GameController" customModule="pongagon_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8ZS-76-bRZ" customClass="GameController" customModule="bubbletime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kbL-wL-jn5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +149,7 @@
         <!--End Game Controller-->
         <scene sceneID="0V4-f3-jIy">
             <objects>
-                <viewController id="Dg8-fC-74H" customClass="EndGameController" customModule="pongagon_2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dg8-fC-74H" customClass="EndGameController" customModule="bubbletime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oYd-Rd-K8S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
