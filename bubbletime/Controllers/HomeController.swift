@@ -9,9 +9,25 @@
 import UIKit
 
 class HomeController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gameFromHomeSegue" {
+            if let controller = segue.destination as? GameController {
+                do {
+                    // Apply the setting to the game controller
+                    controller.gameSettings = try StorageManager().loadSettings()
+                }
+                catch {
+                    // Provide default settings
+                    controller.gameSettings = GameSettings()
+                }
+            }
+        }
     }
 }
 

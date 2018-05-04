@@ -73,7 +73,7 @@
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="8ZS-76-bRZ" kind="show" id="eSS-pz-kAS"/>
+                                                    <segue destination="8ZS-76-bRZ" kind="show" identifier="gameFromHomeSegue" id="eSS-pz-kAS"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="center" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vhw-X9-Ion">
@@ -158,6 +158,9 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="5" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="jRJ-yk-GWd">
                                                         <rect key="frame" x="-2" y="30" width="339" height="31"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="maxPongsChanged:" destination="xTp-V7-W5n" eventType="valueChanged" id="v3q-J5-RWm"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-gt-XMT">
                                                         <rect key="frame" x="0.0" y="60" width="335" height="30"/>
@@ -226,9 +229,11 @@
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="wT9-6r-CsW" firstAttribute="leading" secondItem="ovG-Oj-Ph5" secondAttribute="leading" id="4Ij-6c-KsH"/>
                                     <constraint firstItem="jtf-nt-mJo" firstAttribute="top" secondItem="ovG-Oj-Ph5" secondAttribute="top" id="RyG-Kj-l8f"/>
                                     <constraint firstItem="YIj-SR-LaR" firstAttribute="top" secondItem="jtf-nt-mJo" secondAttribute="bottom" id="aCG-pc-ilu"/>
                                     <constraint firstItem="jtf-nt-mJo" firstAttribute="leading" secondItem="ovG-Oj-Ph5" secondAttribute="leading" id="bHX-lZ-mnq"/>
+                                    <constraint firstAttribute="trailing" secondItem="wT9-6r-CsW" secondAttribute="trailing" id="bxe-OW-C1a"/>
                                     <constraint firstAttribute="trailing" secondItem="jtf-nt-mJo" secondAttribute="trailing" id="deJ-gZ-bet"/>
                                 </constraints>
                             </stackView>
@@ -245,6 +250,11 @@
                     <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="always" id="CZq-7D-fIm">
                         <barButtonItem key="backBarButtonItem" systemItem="save" id="CJ0-Qo-m9y"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="gameLengthSegment" destination="pmp-Zx-wXr" id="O6G-ZW-b27"/>
+                        <outlet property="maxPongsLabel" destination="VSA-gt-XMT" id="yAR-9x-xRA"/>
+                        <outlet property="maxPongsSlider" destination="jRJ-yk-GWd" id="IYc-Xl-gcL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FOA-Al-RNP" sceneMemberID="firstResponder"/>
             </objects>
@@ -409,6 +419,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="eSS-pz-kAS"/>
-        <segue reference="7jC-at-cKx"/>
+        <segue reference="C5a-U3-C5s"/>
     </inferredMetricsTieBreakers>
 </document>

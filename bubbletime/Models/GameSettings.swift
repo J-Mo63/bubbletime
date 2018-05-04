@@ -9,6 +9,19 @@
 import Foundation
 
 struct GameSettings : Encodable, Decodable {
-    let maxPongs: Int = 15
-    var gameTime: Int = 5
+    var maxPongs: Int = 15
+    var gameTime: Int = 1
+    
+    func gameTimeValue() -> Int {
+        switch gameTime {
+        case 0:
+            return 30
+        case 1:
+            return 60
+        case 2:
+            return 120
+        default:
+            return 60
+        }
+    }
 }

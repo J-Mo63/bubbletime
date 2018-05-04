@@ -23,7 +23,7 @@ class GameController: UIViewController, PongDelegate {
     var allowableY: UInt32?
     
     // Fields
-    var gameSettings: GameSettings? = GameSettings()
+    var gameSettings: GameSettings?
     var animatorController: AnimatorManager?
     var gameTimer: Timer?
     var timerTick: Int = 0
@@ -40,7 +40,7 @@ class GameController: UIViewController, PongDelegate {
         // Apply the game settings
         if let settings = gameSettings {
             maxPongs = settings.maxPongs
-            gameTime = settings.gameTime
+            gameTime = settings.gameTimeValue()
         }
         
         // Create the animator controller
