@@ -18,6 +18,8 @@ class GameController: UIViewController, PongDelegate {
     // Game Settings
     var maxPongs: Int = 15
     var gameTime: Int = 60
+    var totalGameTime: Int = 60
+    var highScore: Int = 0
     
     // Dimensions
     var allowableX: UInt32?
@@ -32,7 +34,8 @@ class GameController: UIViewController, PongDelegate {
     
     // Outlets
     @IBOutlet weak var pointsLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
+    @IBOutlet weak var gameTimeProgress: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,11 @@ class GameController: UIViewController, PongDelegate {
         if let settings = gameSettings {
             maxPongs = settings.maxPongs
             gameTime = settings.gameTimeValue()
+            totalGameTime = settings.gameTimeValue()
         }
+        
+        // Set the high score
+        loadHighScore()
         
         // Create the animator controller
         animatorController = AnimatorManager(context: self.view)
@@ -52,7 +59,7 @@ class GameController: UIViewController, PongDelegate {
         allowableY = UInt32(self.view.bounds.size.height) - UInt32(pongSize)
         
         // Set the labels to initial values
-        timerLabel.text = "\(gameTime)s"
+        displayHighScore()
         pointsLabel.text = "\(gamePoints) points"
         
         // Start a timer loop to run the update function
@@ -62,9 +69,19 @@ class GameController: UIViewController, PongDelegate {
     }
     
     func update() {
+        // End the game if the timelimit is reached
+        if gameTime <= 0 {
+            gameTimer?.invalidate()
+            self.performSegue(withIdentifier: "endGameSegue", sender: self)
+        }
+        
         // Decrement the timer
         gameTime -= 1
-        timerLabel.text = "\(gameTime)s"
+        let currentProgress = Float(gameTime)/Float(totalGameTime)
+        UIView.animate(withDuration: timerSpeed + 0.5) {
+            self.gameTimeProgress.setProgress(currentProgress, animated: true)
+        }
+        
         
         // Add more pongs if the max hasn't been reached
         if (getPongCount() < maxPongs) {
@@ -88,12 +105,6 @@ class GameController: UIViewController, PongDelegate {
                     }
                 }
             }
-        }
-        
-        // End the game if the timelimit is reached
-        if gameTime <= 0 {
-            gameTimer?.invalidate()
-            self.performSegue(withIdentifier: "endGameSegue", sender: self)
         }
     }
     
@@ -140,6 +151,18 @@ class GameController: UIViewController, PongDelegate {
         gamePoints += calculatePoints(for: tappedPong.type)
         lastTapped = tappedPong.type
         pointsLabel.text = "\(gamePoints) points"
+        
+        // Check if it's the high score
+        displayHighScore()
+    }
+    
+    func displayHighScore() {
+        if gamePoints > highScore {
+            // Set the high score to the current points
+            highScore = gamePoints
+        }
+        // Update the label
+        highScoreLabel.text = "High Score \(highScore)"
     }
     
     func calculatePoints(for pongType: PongType) -> Int {
@@ -178,6 +201,19 @@ class GameController: UIViewController, PongDelegate {
             
             // Give the next controller the game results
             endGameController.finalScore = gamePoints
+        }
+    }
+    
+    func loadHighScore() {
+        do {
+            // Load the high score
+            var scores = try StorageManager().loadScores()
+            scores.sort(by: { $0.score > $1.score })
+            highScore = scores[0].score
+        }
+        catch {
+            // Set to a default value
+            highScore = 0
         }
     }
 }

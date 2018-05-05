@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -271,7 +272,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="H8J-Zu-XT6">
-                                <rect key="frame" x="5" y="25" width="365" height="24.5"/>
+                                <rect key="frame" x="5" y="42" width="365" height="24.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 points" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMu-fz-FKO">
                                         <rect key="frame" x="0.0" y="0.0" width="182.5" height="24.5"/>
@@ -279,7 +280,7 @@
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0s" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-fQ-pdM">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score 000  " textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-fQ-pdM">
                                         <rect key="frame" x="182.5" y="0.0" width="182.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="BadWrite_Full" family="BadWrite_Full" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -287,18 +288,26 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="n4f-Pd-ZvI">
+                                <rect key="frame" x="16" y="30" width="343" height="2"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.30243832910000001" green="0.48953358470000002" blue="0.85082751509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="H8J-Zu-XT6" firstAttribute="leading" secondItem="Hww-vB-5mJ" secondAttribute="leading" constant="5" id="33M-Wx-XkO"/>
+                            <constraint firstItem="n4f-Pd-ZvI" firstAttribute="top" secondItem="Hww-vB-5mJ" secondAttribute="top" constant="10" id="4Mr-Q9-CmN"/>
+                            <constraint firstItem="n4f-Pd-ZvI" firstAttribute="leading" secondItem="kbL-wL-jn5" secondAttribute="leadingMargin" id="LfE-oq-2el"/>
                             <constraint firstItem="Hww-vB-5mJ" firstAttribute="trailing" secondItem="H8J-Zu-XT6" secondAttribute="trailing" constant="5" id="OJY-hv-F0d"/>
-                            <constraint firstItem="H8J-Zu-XT6" firstAttribute="top" secondItem="Hww-vB-5mJ" secondAttribute="top" constant="5" id="vQ6-YT-QIB"/>
+                            <constraint firstItem="H8J-Zu-XT6" firstAttribute="top" secondItem="n4f-Pd-ZvI" secondAttribute="bottom" constant="10" id="YcH-cK-o3u"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="n4f-Pd-ZvI" secondAttribute="trailing" id="sSb-uM-Kai"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hww-vB-5mJ"/>
                     </view>
                     <connections>
+                        <outlet property="gameTimeProgress" destination="n4f-Pd-ZvI" id="r7Q-Fi-0tE"/>
+                        <outlet property="highScoreLabel" destination="lYz-fQ-pdM" id="MdD-Is-ooQ"/>
                         <outlet property="pointsLabel" destination="RMu-fz-FKO" id="h8S-PX-HRh"/>
-                        <outlet property="timerLabel" destination="lYz-fQ-pdM" id="s8D-MG-zG8"/>
                         <segue destination="Dg8-fC-74H" kind="show" identifier="endGameSegue" id="5Zb-m0-OrR"/>
                     </connections>
                 </viewController>
