@@ -62,4 +62,8 @@ class SettingsController: UIViewController {
             handleError()
         }
     }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "homeFromSettingsSegue", sender: self)
+    }
 }

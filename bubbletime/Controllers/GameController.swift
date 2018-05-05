@@ -12,7 +12,8 @@ class GameController: UIViewController, PongDelegate {
     
     // Constants
     let pongSize: CGFloat = 75
-    let spawnRate: Double = 0.5
+    let timerSpeed: Double = 1.0
+    let removalRate: Int = 3
     
     // Game Settings
     var maxPongs: Int = 15
@@ -26,7 +27,6 @@ class GameController: UIViewController, PongDelegate {
     var gameSettings: GameSettings?
     var animatorController: AnimatorManager?
     var gameTimer: Timer?
-    var timerTick: Int = 0
     var lastTapped: PongType?
     var gamePoints: Int = 0
     
@@ -56,15 +56,38 @@ class GameController: UIViewController, PongDelegate {
         pointsLabel.text = "\(gamePoints) points"
         
         // Start a timer loop to run the update function
-        gameTimer = Timer.scheduledTimer(withTimeInterval: spawnRate, repeats: true, block: { (gameTimer: Timer) in
+        gameTimer = Timer.scheduledTimer(withTimeInterval: timerSpeed, repeats: true, block: { (gameTimer: Timer) in
             self.update()
         })
     }
     
     func update() {
+        // Decrement the timer
+        gameTime -= 1
+        timerLabel.text = "\(gameTime)s"
+        
         // Add more pongs if the max hasn't been reached
         if (getPongCount() < maxPongs) {
-            addPong()
+            let randomToAdd = arc4random_uniform(UInt32(maxPongs - getPongCount()))
+            for _ in 0...randomToAdd {
+                addPong()
+            }
+        }
+        
+        // Remove a "random" pong every so often
+        if gameTime % removalRate == 0 {
+            var randomToDestroy = arc4random_uniform(UInt32(getPongCount()))
+            for view in self.view.subviews {
+                if view.tag >= 100 {
+                    if randomToDestroy > 0 {
+                        destroyPong(view as! Pong)
+                        randomToDestroy -= 1
+                    }
+                    else {
+                        break
+                    }
+                }
+            }
         }
         
         // End the game if the timelimit is reached
@@ -72,21 +95,6 @@ class GameController: UIViewController, PongDelegate {
             gameTimer?.invalidate()
             self.performSegue(withIdentifier: "endGameSegue", sender: self)
         }
-        
-        // Remove a "random" pong every second tick (and also decrement the timer)
-        if timerTick % 3 == 2 {
-            gameTime -= 1
-            timerLabel.text = "\(gameTime)s"
-            for view in self.view.subviews {
-                if view.tag >= 100 {
-                    destroyPong(view as! Pong)
-                    break
-                }
-            }
-        }
-        
-        // Increment the tick
-        timerTick += 1
     }
     
     func addPong() {

@@ -15,6 +15,8 @@ class HomeController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) { }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gameFromHomeSegue" {
             if let controller = segue.destination as? GameController {

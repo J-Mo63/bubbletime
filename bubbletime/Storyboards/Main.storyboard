@@ -126,7 +126,7 @@
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="show" identifier="homeFromSettingsSegue" id="C5a-U3-C5s"/>
+                                                    <action selector="backButtonTapped:" destination="xTp-V7-W5n" eventType="touchUpInside" id="ViM-iS-rI6"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Settings" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGr-GE-Igk">
@@ -254,9 +254,11 @@
                         <outlet property="gameLengthSegment" destination="pmp-Zx-wXr" id="O6G-ZW-b27"/>
                         <outlet property="maxPongsLabel" destination="VSA-gt-XMT" id="yAR-9x-xRA"/>
                         <outlet property="maxPongsSlider" destination="jRJ-yk-GWd" id="IYc-Xl-gcL"/>
+                        <segue destination="qku-Og-Leu" kind="unwind" identifier="homeFromSettingsSegue" unwindAction="unwindToHomeWithSegue:" id="Lko-am-CBM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FOA-Al-RNP" sceneMemberID="firstResponder"/>
+                <exit id="qku-Og-Leu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="964" y="848.72563718140941"/>
         </scene>
@@ -419,6 +421,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="eSS-pz-kAS"/>
-        <segue reference="C5a-U3-C5s"/>
     </inferredMetricsTieBreakers>
 </document>
