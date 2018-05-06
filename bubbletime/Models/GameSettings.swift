@@ -8,6 +8,7 @@
 
 import Foundation
 
+// A model struct for the game settings
 struct GameSettings : Encodable, Decodable {
     var maxPongs: Int = 15
     var gameTime: Int = 1

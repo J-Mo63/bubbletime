@@ -28,6 +28,7 @@ class GameController: UIViewController, PongDelegate {
     // Fields
     var gameSettings: GameSettings?
     var animatorController: AnimatorManager?
+    var audioHelper: AudioHelper?
     var gameTimer: Timer?
     var lastTapped: PongType?
     var gamePoints: Int = 0
@@ -66,6 +67,16 @@ class GameController: UIViewController, PongDelegate {
         gameTimer = Timer.scheduledTimer(withTimeInterval: timerSpeed, repeats: true, block: { (gameTimer: Timer) in
             self.update()
         })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        do {
+            // Create the audio helper
+            audioHelper = try AudioHelper(audioTitle: "pop", fileExtension: "mp3")
+        }
+        catch {
+            handleError()
+        }
     }
     
     func update() {
@@ -145,8 +156,13 @@ class GameController: UIViewController, PongDelegate {
     }
     
     func onPongTapped(_ tappedPong: Pong) {
-        // Destroy the pong and show its points value
+        // Destroy the pong
         destroyPong(tappedPong)
+        
+        // Play the sound effect
+        audioHelper?.player.play()
+        
+        // Show its points value
         showPoints(for: tappedPong)
         gamePoints += calculatePoints(for: tappedPong.type)
         lastTapped = tappedPong.type
@@ -215,5 +231,9 @@ class GameController: UIViewController, PongDelegate {
             // Set to a default value
             highScore = 0
         }
+    }
+    
+    func handleError() {
+        showGeneralErrorMessage(in: self)
     }
 }

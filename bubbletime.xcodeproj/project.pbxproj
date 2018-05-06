@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		DDC39640208733F600B46249 /* Pong.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3963F208733F600B46249 /* Pong.swift */; };
 		DDC3964A20873A7300B46249 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC3964820873A7200B46249 /* Main.storyboard */; };
 		DDC3964B20873A7300B46249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDC3964920873A7300B46249 /* LaunchScreen.storyboard */; };
+		DDCA72DD209EA8ED00D51DA6 /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCA72DC209EA8ED00D51DA6 /* AudioHelper.swift */; };
+		DDCA72DF209EA95A00D51DA6 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DDCA72DE209EA95900D51DA6 /* pop.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		DDC3963F208733F600B46249 /* Pong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pong.swift; sourceTree = "<group>"; };
 		DDC3964820873A7200B46249 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		DDC3964920873A7300B46249 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DDCA72DC209EA8ED00D51DA6 /* AudioHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHelper.swift; sourceTree = "<group>"; };
+		DDCA72DE209EA95900D51DA6 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 				DD99FF84208F45B4009B42E5 /* AnimatorManager.swift */,
 				DD439C1B209AC1EA00F5C809 /* AlertHelper.swift */,
 				DD439C1D209B105A00F5C809 /* StorageManager.swift */,
+				DDCA72DC209EA8ED00D51DA6 /* AudioHelper.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 		DDC3964F20873AC400B46249 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				DDCA72DE209EA95900D51DA6 /* pop.mp3 */,
 				DD532974209C88F2000E0688 /* icon.png */,
 				DDC3963720872BA400B46249 /* pong.png */,
 				DD99FF7F208F25D1009B42E5 /* BadWrite.ttf */,
@@ -183,11 +189,12 @@
 				TargetAttributes = {
 					DDC3960C208702F000B46249 = {
 						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = DDC39608208702F000B46249 /* Build configuration list for PBXProject "bubbletime" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -214,6 +221,7 @@
 				DD532975209C88F2000E0688 /* icon.png in Resources */,
 				DDC39618208702F100B46249 /* Assets.xcassets in Resources */,
 				DDC3964B20873A7300B46249 /* LaunchScreen.storyboard in Resources */,
+				DDCA72DF209EA95A00D51DA6 /* pop.mp3 in Resources */,
 				DDC3964A20873A7300B46249 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +239,7 @@
 				DD439C20209B134D00F5C809 /* GameSettings.swift in Sources */,
 				DD439C1E209B105A00F5C809 /* StorageManager.swift in Sources */,
 				DD265AD82099EF4E00FF1C0D /* PlayerScore.swift in Sources */,
+				DDCA72DD209EA8ED00D51DA6 /* AudioHelper.swift in Sources */,
 				DD99FF85208F45B4009B42E5 /* AnimatorManager.swift in Sources */,
 				DDC39611208702F000B46249 /* AppDelegate.swift in Sources */,
 				DD99FF87208FB6FC009B42E5 /* Points.swift in Sources */,
@@ -351,8 +360,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -365,10 +373,7 @@
 				DEVELOPMENT_TEAM = 2A9AZU9A2Y;
 				INFOPLIST_FILE = "$(SRCROOT)/bubbletime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sudo-code.bubbletime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -384,10 +389,7 @@
 				DEVELOPMENT_TEAM = 2A9AZU9A2Y;
 				INFOPLIST_FILE = "$(SRCROOT)/bubbletime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sudo-code.bubbletime";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

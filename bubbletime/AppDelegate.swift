@@ -41,7 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
+func showGeneralErrorMessage(in controller: UIViewController) {
+    let ah = AlertHelper(withText: "An error has occured", and: "We are sorry for the inconvenience")
+    ah.displayAlert(for: controller)
+}

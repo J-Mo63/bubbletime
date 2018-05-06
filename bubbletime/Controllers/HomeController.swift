@@ -10,12 +10,9 @@ import UIKit
 
 class HomeController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+        // An empty IBAction to unwind to
     }
-    
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) { }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gameFromHomeSegue" {

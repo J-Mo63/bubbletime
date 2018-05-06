@@ -17,6 +17,7 @@ class EndGameController: UIViewController, UITableViewDataSource, UITableViewDel
     var finalScore: Int!
     let storageManager: StorageManager = StorageManager()
     var scores: [PlayerScore] = []
+    var errorBeforeLoad: Bool = false
     
     // Outlet fields
     @IBOutlet weak var scoreLabel: UILabel!
@@ -31,7 +32,7 @@ class EndGameController: UIViewController, UITableViewDataSource, UITableViewDel
             scores = try storageManager.loadScores()
         }
         catch {
-            handleError()
+            errorBeforeLoad = true
         }
         sortScores()
         
@@ -51,6 +52,10 @@ class EndGameController: UIViewController, UITableViewDataSource, UITableViewDel
         alertHelper.delegate = self
         alertHelper.addTextField(for: "Name")
         alertHelper.displayAlert(for: self)
+        
+        if errorBeforeLoad {
+            handleError()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,7 +63,7 @@ class EndGameController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return maxDisplayScores
+        return min(scores.count, maxDisplayScores)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,6 +113,6 @@ class EndGameController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func handleError() {
-        print("Handling error")
+        showGeneralErrorMessage(in: self)
     }
 }

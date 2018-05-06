@@ -49,7 +49,7 @@ class SettingsController: UIViewController {
     }
     
     func handleError() {
-        print("Error")
+        showGeneralErrorMessage(in: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

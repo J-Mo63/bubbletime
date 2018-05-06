@@ -8,6 +8,7 @@
 
 import Foundation
 
+// A model struct for the player's score
 struct PlayerScore : Encodable, Decodable {
     var name: String
     var score: Int
